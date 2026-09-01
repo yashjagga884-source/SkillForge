@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import { CheckCircle, Users, Target, Zap } from 'lucide-react'
+import { motion } from '../components/common/StaticMotion'
+import { CheckCircle, Users, Target, Zap } from '../components/common/Icons'
 
 export function About() {
   return (

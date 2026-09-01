@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowLeft, Bookmark, Share2 } from 'lucide-react'
+import { motion } from '../components/common/StaticMotion'
+import { ArrowLeft, Bookmark, Share2 } from '../components/common/Icons'
 import { CAREERS } from '../constants/data'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import toast from 'react-hot-toast'
+import toast from '../utils/toast'
 
 export function CareerDetails() {
   const { id } = useParams()
@@ -14,6 +14,7 @@ export function CareerDetails() {
 
   const career = CAREERS.find(c => c.id === parseInt(id))
 
+  // Track recently viewed
   React.useEffect(() => {
     if (career) {
       const updated = [career.id, ...recentlyViewed.filter(cid => cid !== career.id)].slice(0, 10)

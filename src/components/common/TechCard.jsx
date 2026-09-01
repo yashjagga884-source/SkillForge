@@ -1,7 +1,7 @@
-import { Bookmark } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Bookmark } from './Icons'
+import { motion } from './StaticMotion'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import toast from 'react-hot-toast'
+import toast from '../../utils/toast'
 
 export function TechCard({ tech }) {
   const [bookmarks, setBookmarks] = useLocalStorage('bookmarks', [])

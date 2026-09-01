@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, X } from 'lucide-react'
+import { Search, X } from './Icons'
 import { debounce } from '../../utils/helpers'
 
 export function SearchBar({ onSearch, placeholder = 'Search...', className = '' }) {

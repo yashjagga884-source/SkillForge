@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import toast from 'react-hot-toast'
+import { motion } from '../components/common/StaticMotion'
+import { Mail, Phone, MapPin, Send } from '../components/common/Icons'
+import toast from '../utils/toast'
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -25,8 +25,10 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000))
 
+      // Here you would typically send this to a backend
       console.log('Form submitted:', formData)
 
       toast.success('Message sent successfully! We\'ll get back to you soon.')
@@ -118,10 +120,9 @@ export function Contact() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="contact-name" className="block text-sm font-semibold mb-2">Name</label>
+              <label className="block text-sm font-semibold mb-2">Name</label>
               <input
                 type="text"
-                id="contact-name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -131,10 +132,9 @@ export function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="contact-email" className="block text-sm font-semibold mb-2">Email</label>
+              <label className="block text-sm font-semibold mb-2">Email</label>
               <input
                 type="email"
-                id="contact-email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -146,10 +146,9 @@ export function Contact() {
           </div>
 
           <div>
-            <label htmlFor="contact-subject" className="block text-sm font-semibold mb-2">Subject</label>
+            <label className="block text-sm font-semibold mb-2">Subject</label>
             <input
               type="text"
-              id="contact-subject"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
@@ -160,9 +159,8 @@ export function Contact() {
           </div>
 
           <div>
-            <label htmlFor="contact-message" className="block text-sm font-semibold mb-2">Message</label>
+            <label className="block text-sm font-semibold mb-2">Message</label>
             <textarea
-              id="contact-message"
               name="message"
               value={formData.message}
               onChange={handleChange}

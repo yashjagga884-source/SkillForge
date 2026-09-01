@@ -1,7 +1,7 @@
-import { ArrowUpRight, Briefcase, Clock3, Star, TrendingUp } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { ArrowUpRight, Briefcase, Clock3, Star, TrendingUp } from './Icons'
+import { motion } from './StaticMotion'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import toast from 'react-hot-toast'
+import toast from '../../utils/toast'
 
 export function CareerCard({ career, onClick }) {
   const [favorites, setFavorites] = useLocalStorage('favorites', [])

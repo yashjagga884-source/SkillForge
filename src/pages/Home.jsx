@@ -33,10 +33,6 @@ export function Home() {
     <div className="space-y-20 pb-12">
       {/* Hero Section */}
       <section className="relative isolate overflow-hidden py-20">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <span className="absolute left-[12%] top-8 h-64 w-64 rounded-full bg-sky-300/20 blur-[90px] dark:bg-blue-500/15" />
-          <span className="absolute right-[12%] top-28 h-72 w-72 rounded-full bg-indigo-200/25 blur-[100px] dark:bg-cyan-500/10" />
-        </div>
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-12 -z-10 flex flex-col items-center select-none overflow-hidden">
           <span className="absolute -top-8 translate-x-3 text-[clamp(5rem,15vw,12rem)] font-bold leading-none tracking-[-0.08em] text-primary/[0.035] blur-[2px]">SkillForge</span>
           <span className="absolute top-0 -translate-x-2 text-[clamp(5rem,15vw,12rem)] font-bold leading-none tracking-[-0.08em] text-secondary/[0.04] blur-[5px]">SkillForge</span>
@@ -145,6 +141,16 @@ export function Home() {
               </span>
             </button>
           ))}
+        </div>
+      </section>
+
+      <section className="rounded-xl border-y border-slate-200/80 py-8 dark:border-dark-border" aria-labelledby="industry-examples-heading">
+        <div className="text-center">
+          <h2 id="industry-examples-heading" className="text-lg font-semibold">Technology is part of work across industries</h2>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">A few familiar names, included as industry examples.</p>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 text-lg font-semibold tracking-tight text-slate-500 grayscale dark:text-slate-400" aria-label="Industry examples">
+          {['Volkswagen', 'SAMSUNG', 'cisco', 'vimeo', 'P&G', 'HP Enterprise', 'citi', 'ERICSSON'].map((company) => <span key={company}>{company}</span>)}
         </div>
       </section>
 

@@ -1,147 +1,81 @@
-import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { useMemo, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { BookOpen, Check, Clock3, Search } from 'lucide-react'
 import { TECHNOLOGIES } from '../constants/data'
-import { TechCard } from '../components/common/TechCard'
-import { SearchBar } from '../components/common/SearchBar'
-import { FilterBar, FilterTags } from '../components/common/FilterBar'
-import { filterBySearch, filterByCategory, filterByLevel, getUnique } from '../utils/helpers'
 
 export function Technologies() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [filters, setFilters] = useState({
-    category: { label: 'Category', options: [], value: null },
-    level: { label: 'Level', options: [], value: null },
-  })
-
-  // Initialize filter options
-  const filterOptions = useMemo(() => ({
-    category: getUnique(TECHNOLOGIES, 'category'),
-    level: getUnique(TECHNOLOGIES, 'level'),
-  }), [])
-
-  // Update filter options
-  useMemo(() => {
-    setFilters(prev => ({
-      ...prev,
-      category: { ...prev.category, options: filterOptions.category },
-      level: { ...prev.level, options: filterOptions.level },
-    }))
-  }, [filterOptions])
-
-  // Filter technologies
-  const filteredTechs = useMemo(() => {
-    let results = filterBySearch(TECHNOLOGIES, searchTerm, ['name', 'description', 'category'])
-
-    if (filters.category.value) {
-      results = filterByCategory(results, filters.category.value, 'category')
-    }
-
-    if (filters.level.value) {
-      results = filterByLevel(results, filters.level.value)
-    }
-
-    return results
-  }, [searchTerm, filters])
-
-  const handleFilterChange = (key, value) => {
-    setFilters(prev => ({
-      ...prev,
-      [key]: { ...prev[key], value },
-    }))
-  }
-
-  const handleRemoveFilter = (key) => {
-    handleFilterChange(key, null)
-  }
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedId = Number(searchParams.get('skill')) || TECHNOLOGIES[0].id
+  const selectedTech = TECHNOLOGIES.find((tech) => tech.id === selectedId) || TECHNOLOGIES[0]
+  const filteredTechs = useMemo(() => TECHNOLOGIES.filter((tech) => (
+    `${tech.name} ${tech.description} ${tech.category}`.toLowerCase().includes(searchTerm.toLowerCase())
+  )), [searchTerm])
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center py-8">
-        <h1 className="section-heading">Master Technologies</h1>
-        <p className="section-subheading">Learn the tools and languages shaping the future</p>
+    <div className="mx-auto max-w-6xl space-y-8 py-8">
+      <header className="mx-auto max-w-2xl text-center">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary">Explore and learn</p>
+        <h1 className="section-heading">Choose a technology</h1>
+        <p className="mx-auto max-w-xl text-slate-600 dark:text-slate-300">Select a topic to see what it is, how long it may take to learn, and where to start.</p>
+      </header>
+
+      <div className="relative mx-auto max-w-2xl">
+        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+        <input className="input-field !pl-11" type="search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder="Search technologies..." aria-label="Search technologies" />
       </div>
 
-      {/* Search and Filters */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Filters Sidebar */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="lg:col-span-1"
-        >
-          <div className="card p-6 sticky top-24">
-            <FilterBar filters={filters} onFilterChange={handleFilterChange} />
-          </div>
-        </motion.div>
-
-        {/* Main Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="lg:col-span-3 space-y-6"
-        >
-          {/* Search Bar */}
-          <SearchBar
-            onSearch={setSearchTerm}
-            placeholder="Search technologies..."
-          />
-
-          {/* Filter Tags */}
-          {(filters.category.value || filters.level.value) && (
-            <FilterTags filters={filters} onRemoveFilter={handleRemoveFilter} />
-          )}
-
-          {/* Results Count */}
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            Found {filteredTechs.length} technology{filteredTechs.length !== 1 ? 's' : ''}
-          </div>
-
-          {/* Technologies Grid */}
-          {filteredTechs.length > 0 ? (
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ staggerChildren: 0.05 }}
-            >
-              {filteredTechs.map((tech, index) => (
-                <motion.div
-                  key={tech.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <TechCard tech={tech} />
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="card p-12 text-center"
-            >
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-4">
-                No technologies found matching your criteria.
-              </p>
+      {filteredTechs.length ? (
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.5fr)]">
+          <section aria-label="Technology list" className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">
+            {filteredTechs.map((tech) => (
               <button
-                onClick={() => {
-                  setSearchTerm('')
-                  setFilters(prev => ({
-                    ...prev,
-                    category: { ...prev.category, value: null },
-                    level: { ...prev.level, value: null },
-                  }))
-                }}
-                className="btn-primary"
+                type="button"
+                key={tech.id}
+                onClick={() => setSearchParams({ skill: String(tech.id) })}
+                aria-pressed={selectedTech.id === tech.id}
+                className={`flex min-h-16 items-center gap-3 rounded-lg border px-4 py-3 text-left transition-colors ${selectedTech.id === tech.id ? 'border-primary bg-primary/5 text-primary dark:bg-primary/10' : 'border-slate-200 bg-white hover:border-primary/40 dark:border-dark-border dark:bg-dark-card'}`}
               >
-                Clear Filters
+                <span className="text-2xl" aria-hidden="true">{tech.icon}</span>
+                <span className="text-sm font-semibold">{tech.name}</span>
               </button>
-            </motion.div>
-          )}
-        </motion.div>
-      </div>
+            ))}
+          </section>
+
+          <article className="card p-6 sm:p-8" aria-live="polite">
+            <div className="flex items-start gap-4">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-primary/10 text-3xl" aria-hidden="true">{selectedTech.icon}</span>
+              <div>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{selectedTech.category}</p>
+                <h2 className="mt-1 text-3xl font-semibold">{selectedTech.name}</h2>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">{selectedTech.description}</p>
+              </div>
+            </div>
+
+            <div className="mt-7 grid gap-4 rounded-lg bg-slate-50 p-4 sm:grid-cols-2 dark:bg-dark-bg">
+              <div className="flex items-center gap-3"><BookOpen size={19} className="text-primary" aria-hidden="true" /><div><p className="text-xs text-slate-500 dark:text-slate-400">Starting level</p><p className="font-medium">{selectedTech.level}</p></div></div>
+              <div className="flex items-center gap-3"><Clock3 size={19} className="text-primary" aria-hidden="true" /><div><p className="text-xs text-slate-500 dark:text-slate-400">Suggested learning time</p><p className="font-medium">{selectedTech.learningTime}</p></div></div>
+            </div>
+
+            <div className="mt-7">
+              <h3 className="font-semibold">Useful for these career paths</h3>
+              <div className="mt-3 flex flex-wrap gap-2">{selectedTech.relatedCareers.map((career) => <span key={career} className="rounded-full bg-primary/10 px-3 py-1.5 text-sm text-primary">{career}</span>)}</div>
+            </div>
+
+            <div className="mt-7">
+              <h3 className="font-semibold">Places to start</h3>
+              <ul className="mt-3 space-y-2">{selectedTech.resources.map((resource) => <li key={resource} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300"><Check size={16} className="text-primary" aria-hidden="true" />{resource}</li>)}</ul>
+            </div>
+
+            <Link to="/pricing" className="btn-primary mt-8 inline-flex w-full items-center justify-center sm:w-auto">Subscribe</Link>
+          </article>
+        </div>
+      ) : (
+        <div className="card p-10 text-center">
+          <p className="text-slate-600 dark:text-slate-300">No technologies match “{searchTerm}”.</p>
+          <button className="btn-outline mt-4" onClick={() => setSearchTerm('')}>Clear search</button>
+        </div>
+      )}
     </div>
   )
 }

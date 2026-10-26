@@ -42,8 +42,8 @@ export function Pricing() {
   return (
     <div className="mx-auto max-w-6xl space-y-12 py-8">
       <header className="mx-auto max-w-2xl text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-primary">Pricing</p>
-        <h1 className="section-heading">A plan that fits your pace.</h1>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-primary">Subscribe</p>
+        <h1 className="section-heading">Choose a plan that fits your pace.</h1>
         <p className="mx-auto max-w-xl text-slate-600 dark:text-slate-300">
           Choose how often you’d like to be billed. Every plan includes the same SkillForge learning tools.
         </p>

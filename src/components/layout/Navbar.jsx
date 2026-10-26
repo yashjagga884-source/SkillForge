@@ -13,7 +13,7 @@ export function Navbar({ onOpenLogin, isSignedIn, signedInEmail, onSignOut }) {
     { label: 'Careers', path: '/careers' },
     { label: 'Technologies', path: '/technologies' },
     { label: 'Quizzes', path: '/quizzes' },
-    { label: 'Pricing', path: '/pricing' },
+    { label: 'Subscribe', path: '/pricing' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ]

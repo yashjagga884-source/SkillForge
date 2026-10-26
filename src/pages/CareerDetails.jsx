@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { motion } from '../components/common/StaticMotion'
-import { ArrowLeft, Bookmark, Share2 } from '../components/common/Icons'
+import { motion } from 'framer-motion'
+import { ArrowLeft, Bookmark, Share2 } from 'lucide-react'
 import { CAREERS } from '../constants/data'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import toast from '../utils/toast'
+import toast from 'react-hot-toast'
 
 export function CareerDetails() {
   const { id } = useParams()
@@ -244,14 +244,14 @@ export function CareerDetails() {
 
           {/* CTA */}
           <motion.div
-            className="card p-6 bg-gradient-to-br from-primary to-secondary text-white text-center"
+            className="card p-6 bg-white dark:bg-dark-card text-secondary text-center"
             whileHover={{ scale: 1.05 }}
           >
             <h3 className="text-xl font-bold mb-2">Start Learning</h3>
-            <p className="text-sm mb-4 opacity-90">
+            <p className="text-sm mb-4 text-gray-600 dark:text-gray-300">
               Begin your {career.name} journey with our personalized roadmap
             </p>
-            <button className="w-full bg-white text-primary hover:bg-gray-100 font-bold py-2 rounded-lg transition-colors">
+            <button className="btn-primary w-full font-bold py-2 rounded-lg transition-colors">
               Create Roadmap
             </button>
           </motion.div>
@@ -260,7 +260,7 @@ export function CareerDetails() {
           <div className="card p-6 space-y-4">
             <div>
               <p className="text-xs text-gray-600 dark:text-gray-400 uppercase font-semibold">Average Salary</p>
-              <p className="text-2xl font-bold text-green-600">{career.salary}</p>
+              <p className="text-2xl font-bold text-secondary">{career.salary}</p>
             </div>
             <div>
               <p className="text-xs text-gray-600 dark:text-gray-400 uppercase font-semibold">Learning Duration</p>
@@ -268,7 +268,7 @@ export function CareerDetails() {
             </div>
             <div>
               <p className="text-xs text-gray-600 dark:text-gray-400 uppercase font-semibold">Market Demand</p>
-              <p className="text-2xl font-bold text-accent">{career.demand}</p>
+              <p className="text-2xl font-bold text-secondary">{career.demand}</p>
             </div>
           </div>
         </motion.div>

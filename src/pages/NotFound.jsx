@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { motion } from '../components/common/StaticMotion'
+import { motion } from 'framer-motion'
 
 export function NotFound() {
   const navigate = useNavigate()

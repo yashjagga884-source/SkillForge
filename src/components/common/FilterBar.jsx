@@ -1,4 +1,4 @@
-import { Filter } from './Icons'
+import { Filter } from 'lucide-react'
 
 export function FilterBar({ filters, onFilterChange, showLabel = true }) {
   return (

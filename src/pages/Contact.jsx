@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { motion } from '../components/common/StaticMotion'
-import { Mail, Phone, MapPin, Send } from '../components/common/Icons'
-import toast from '../utils/toast'
+import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -238,10 +238,10 @@ export function Contact() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-gradient-to-r from-primary to-secondary text-white rounded-2xl p-12 text-center"
+        className="bg-white text-secondary rounded-2xl border border-primary/20 p-12 text-center"
       >
         <h2 className="text-3xl font-bold mb-4 font-poppins">Stay Updated</h2>
-        <p className="text-lg opacity-90 mb-6 max-w-xl mx-auto">
+        <p className="text-lg text-gray-600 mb-6 max-w-xl mx-auto">
           Subscribe to our newsletter for the latest career tips, learning resources, and platform updates.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -250,7 +250,7 @@ export function Contact() {
             placeholder="Enter your email"
             className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
           />
-          <button className="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-bold transition-colors">
+          <button className="btn-primary px-6 py-3 rounded-lg font-bold transition-colors">
             Subscribe
           </button>
         </div>

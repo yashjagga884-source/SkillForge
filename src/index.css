@@ -8,57 +8,52 @@
   }
 
   body {
-    @apply font-inter bg-slate-50 text-ink dark:bg-dark-bg dark:text-slate-100 transition-colors duration-300 antialiased;
-    background-image: radial-gradient(circle at top, rgba(79, 70, 229, 0.06), transparent 32rem);
+    @apply font-inter bg-white dark:bg-dark-bg text-[#17212d] dark:text-gray-100 transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins font-bold;
+    @apply font-poppins font-bold tracking-tight;
   }
 
   button {
-    @apply transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-dark-bg;
+    @apply transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-dark-bg;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-5 py-3 bg-primary text-white rounded-xl font-semibold shadow-lg shadow-indigo-500/20 hover:bg-indigo-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/25 active:translate-y-0;
+    @apply px-6 py-2.5 bg-primary text-white rounded-md shadow-sm hover:bg-blue-500 hover:shadow-md active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply px-5 py-3 bg-secondary text-white rounded-xl font-semibold shadow-lg shadow-emerald-500/20 hover:bg-emerald-600 hover:-translate-y-0.5;
+    @apply px-6 py-2.5 bg-secondary text-white rounded-md shadow-sm hover:bg-sky-500 hover:shadow-md active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply px-5 py-3 border border-indigo-200 bg-white/70 text-primary rounded-xl font-semibold hover:border-primary hover:bg-primary hover:text-white dark:border-slate-700 dark:bg-dark-card;
+    @apply px-6 py-2.5 border border-primary text-primary rounded-md hover:bg-primary hover:text-white;
   }
 
   .card {
-    @apply bg-white/90 dark:bg-dark-card border border-slate-200/80 dark:border-dark-border rounded-2xl shadow-sm transition-all duration-300;
+    @apply bg-white dark:bg-dark-card border border-[#dfe5ef] dark:border-dark-border rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
   }
 
   .card-hover {
-    @apply card hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70 dark:hover:shadow-none;
+    @apply card hover:-translate-y-1;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl tracking-tight text-ink dark:text-white font-bold mb-3;
+    @apply text-3xl md:text-4xl font-bold mb-3;
   }
 
   .section-subheading {
-    @apply text-base md:text-lg text-slate-600 dark:text-slate-300 mb-10;
+    @apply text-base md:text-lg text-slate-500 dark:text-slate-300 mb-10;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-slate-300 bg-white dark:border-dark-border dark:bg-dark-card focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-colors;
-  }
-
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-200;
+    @apply w-full px-4 py-3 rounded-md border border-[#dfe5ef] dark:border-dark-border bg-white dark:bg-dark-card focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors;
   }
 }

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from './context/ThemeContext'
+import { ToastContainer } from './components/common/Toast'
 import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
 import { Careers } from './pages/Careers'
@@ -11,16 +12,11 @@ import { NotFound } from './pages/NotFound'
 import { Quizzes } from './pages/Quizzes'
 
 function App() {
-  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark')
-
-  useEffect(() => {
-    localStorage.setItem('theme', isDark ? 'dark' : 'light')
-    document.documentElement.classList.toggle('dark', isDark)
-  }, [isDark])
-
   return (
-    <Router>
-      <Layout isDark={isDark} toggleTheme={() => setIsDark(!isDark)}>
+    <ThemeProvider>
+      <Router>
+        <ToastContainer />
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/careers" element={<Careers />} />
@@ -31,8 +27,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-      </Layout>
-    </Router>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   )
 }
 

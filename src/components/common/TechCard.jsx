@@ -1,7 +1,7 @@
-import { Bookmark } from './Icons'
-import { motion } from './StaticMotion'
+import { Bookmark } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import toast from '../../utils/toast'
+import toast from 'react-hot-toast'
 
 export function TechCard({ tech }) {
   const [bookmarks, setBookmarks] = useLocalStorage('bookmarks', [])
@@ -21,30 +21,30 @@ export function TechCard({ tech }) {
   const getDifficultyColor = (level) => {
     switch (level.toLowerCase()) {
       case 'beginner':
-        return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200'
+        return 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-100'
       case 'intermediate':
-        return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200'
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100'
       case 'advanced':
-        return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200'
+        return 'bg-blue-200 text-blue-900 dark:bg-blue-700 dark:text-blue-50'
       default:
-        return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+        return 'bg-slate-100 text-slate-700 dark:bg-dark-border dark:text-blue-100'
     }
   }
 
   return (
     <motion.div
-      whileHover={{ y: -6 }}
+      whileHover={{ scale: 1.05, translateY: -5 }}
       transition={{ duration: 0.3 }}
-      className="card p-6 group hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 dark:hover:border-indigo-400/30"
+      className="card p-6 group"
     >
       <div className="flex justify-between items-start mb-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-3xl dark:bg-emerald-400/10">{tech.icon}</div>
+        <div className="text-4xl">{tech.icon}</div>
         <button
           onClick={handleBookmark}
           className={`p-2 rounded-lg transition-all ${
             isBookmarked
               ? 'bg-secondary text-white'
-              : 'bg-slate-100 dark:bg-dark-border text-slate-400 group-hover:text-secondary'
+              : 'bg-blue-50 dark:bg-dark-border text-blue-400 group-hover:text-secondary'
           }`}
         >
           <Bookmark className="w-5 h-5" fill={isBookmarked ? 'currentColor' : 'none'} />

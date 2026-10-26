@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion } from '../components/common/StaticMotion'
 import { CAREERS } from '../constants/data'
 import { CareerCard } from '../components/common/CareerCard'
 import { SearchBar } from '../components/common/SearchBar'
@@ -11,24 +11,9 @@ export function Careers() {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const [filters, setFilters] = useState({
-    domain: { label: 'Domain', options: [], value: null },
-    difficulty: { label: 'Difficulty', options: [], value: null },
+    domain: { label: 'Domain', options: getUnique(CAREERS, 'domain'), value: null },
+    difficulty: { label: 'Difficulty', options: getUnique(CAREERS, 'difficulty'), value: null },
   })
-
-  // Initialize filter options
-  const filterOptions = useMemo(() => ({
-    domain: getUnique(CAREERS, 'domain'),
-    difficulty: getUnique(CAREERS, 'difficulty'),
-  }), [])
-
-  // Update filter options
-  useMemo(() => {
-    setFilters(prev => ({
-      ...prev,
-      domain: { ...prev.domain, options: filterOptions.domain },
-      difficulty: { ...prev.difficulty, options: filterOptions.difficulty },
-    }))
-  }, [filterOptions])
 
   // Filter careers
   const filteredCareers = useMemo(() => {

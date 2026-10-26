@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Clock3, GraduationCap, Search, Trophy, XCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Clock3, GraduationCap, Search, Trophy, XCircle } from '../components/common/Icons'
 import { QUIZZES } from '../constants/quizzes'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 

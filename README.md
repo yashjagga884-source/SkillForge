@@ -1,50 +1,45 @@
-# 🚀 SkillForge-AI
+# SkillForge AI
 
-SkillForge AI is a modern student career platform that helps learners discover career paths, analyze their current skills, generate personalized learning roadmaps, build project portfolios, track progress, explore internships, and prepare for interviews—all in one place.
+**Learn smarter. Build faster. Get hired.**
 
----
+SkillForge AI is a React platform for students and early-career professionals to explore career paths, understand required skills, and find learning resources in one place.
 
-## 💡 Think of it as
+## Features
 
-- 🛣️ Roadmap.sh
-- 💼 LinkedIn Learning
-- 📂 GitHub Portfolio
-- 🎓 Coursera Planner
-- 🤖 ChatGPT Guidance
+- Browse careers and view skill requirements and learning roadmaps
+- Search and filter careers and technologies
+- Save favourite careers and bookmarked technologies locally
+- Responsive interface with light and dark themes
 
-**...combined into a single platform built specifically for students.**
+## Tech Stack
 
----
+- React 18 and Vite
+- React Router
+- Tailwind CSS
 
-## 🎯 Why SkillForge AI?
+## Getting Started
 
-Students constantly struggle with questions like:
+```bash
+npm install
+npm run dev
+```
 
-- ❓ What should I learn next?
-- 🛠️ Which projects should I build?
-- 📈 Am I industry-ready?
-- 💼 Which internships match my skills?
-- 📅 How do I track my learning journey?
+Open `http://localhost:5173` in your browser.
 
-Instead of switching between **8–10 different platforms**, SkillForge AI brings everything together in one seamless experience.
+### Production Build
 
----
+```bash
+npm run build
+npm run preview
+```
 
-## ✨ Key Features
+## Project Structure
 
-- 🎯 AI-powered Career Guidance
-- 🛣️ Personalized Learning Roadmaps
-- 📂 Project Portfolio Builder
-- 📊 Skill Progress Tracking
-- 💼 Internship Discovery
-- 🎤 Interview Preparation
-- 📚 Learning Resource Recommendations
-- 🏆 Achievement Dashboard
+- `src/pages` — application pages
+- `src/components` — reusable UI and layout components
+- `src/constants/data.js` — career and technology data
+- `src/hooks` — shared React hooks
 
----
+## Support
 
-## 🚀 Vision
-
-Our goal is to become the **ultimate career companion for students**, helping them learn the right skills, build real projects, and become industry-ready through one intelligent platform.
-
-> **Learn. Build. Grow. Get Hired.**
+For questions or feedback, contact yashjagga884@gmail.com.

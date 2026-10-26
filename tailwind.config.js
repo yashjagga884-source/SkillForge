@@ -8,18 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#4295F5',
-        secondary: '#2877D8',
-        accent: '#8BC4FF',
+        primary: '#4F46E5',
+        secondary: '#0F9F8B',
+        accent: '#F59E0B',
+        ink: '#172033',
         dark: {
-          bg: '#08294D',
-          card: '#0D355F',
-          border: '#1D4A78'
+          bg: '#0B1120',
+          card: '#131D32',
+          border: '#26344F'
         }
       },
       fontFamily: {
-        poppins: ['Bricolage Grotesque', 'sans-serif'],
-        inter: ['DM Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in',

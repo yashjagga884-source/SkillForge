@@ -1,15 +1,15 @@
-import { Mail, Github, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Github, Linkedin, Twitter } from '../common/Icons'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-white dark:bg-dark-card border-t border-primary/15 dark:border-dark-border mt-20">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="mt-20 border-t border-slate-200 bg-white/70 dark:border-dark-border dark:bg-dark-card/40">
+      <div className="container mx-auto max-w-7xl px-4 py-12 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold font-poppins gradient-text mb-2">SkillForge</h3>
+            <h3 className="mb-2 text-xl font-bold font-poppins text-ink dark:text-white">SkillForge<span className="text-primary">AI</span></h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
               Learn smarter. Build faster. Get hired.
             </p>
@@ -43,28 +43,28 @@ export function Footer() {
             <div className="flex gap-4">
               <a
                 href="mailto:hello@skillforge.ai"
-                className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-primary hover:text-white transition-colors"
+                className="rounded-xl border border-slate-200 bg-white p-2 hover:border-primary hover:bg-primary hover:text-white dark:border-dark-border dark:bg-dark-card"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-primary hover:text-white transition-colors"
+                className="rounded-xl border border-slate-200 bg-white p-2 hover:border-primary hover:bg-primary hover:text-white dark:border-dark-border dark:bg-dark-card"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-primary hover:text-white transition-colors"
+                className="rounded-xl border border-slate-200 bg-white p-2 hover:border-primary hover:bg-primary hover:text-white dark:border-dark-border dark:bg-dark-card"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-primary hover:text-white transition-colors"
+                className="rounded-xl border border-slate-200 bg-white p-2 hover:border-primary hover:bg-primary hover:text-white dark:border-dark-border dark:bg-dark-card"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />

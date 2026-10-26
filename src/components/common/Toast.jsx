@@ -9,7 +9,7 @@ export function ToastContainer() {
       toastOptions={{
         duration: 4000,
         style: {
-          background: '#0B3B70',
+          background: '#1E293B',
           color: '#fff',
           borderRadius: '8px',
           padding: '16px',
@@ -17,12 +17,12 @@ export function ToastContainer() {
         },
         success: {
           style: {
-            background: '#2877D8',
+            background: '#10B981',
           },
         },
         error: {
           style: {
-            background: '#4295F5',
+            background: '#EF4444',
           },
         },
       }}

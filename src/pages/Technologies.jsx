@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '../components/common/StaticMotion'
 import { TECHNOLOGIES } from '../constants/data'
 import { TechCard } from '../components/common/TechCard'
 import { SearchBar } from '../components/common/SearchBar'
@@ -9,24 +9,9 @@ import { filterBySearch, filterByCategory, filterByLevel, getUnique } from '../u
 export function Technologies() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filters, setFilters] = useState({
-    category: { label: 'Category', options: [], value: null },
-    level: { label: 'Level', options: [], value: null },
+    category: { label: 'Category', options: getUnique(TECHNOLOGIES, 'category'), value: null },
+    level: { label: 'Level', options: getUnique(TECHNOLOGIES, 'level'), value: null },
   })
-
-  // Initialize filter options
-  const filterOptions = useMemo(() => ({
-    category: getUnique(TECHNOLOGIES, 'category'),
-    level: getUnique(TECHNOLOGIES, 'level'),
-  }), [])
-
-  // Update filter options
-  useMemo(() => {
-    setFilters(prev => ({
-      ...prev,
-      category: { ...prev.category, options: filterOptions.category },
-      level: { ...prev.level, options: filterOptions.level },
-    }))
-  }, [filterOptions])
 
   // Filter technologies
   const filteredTechs = useMemo(() => {

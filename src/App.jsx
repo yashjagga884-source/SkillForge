@@ -11,6 +11,7 @@ import { About } from './pages/About'
 import { Contact } from './pages/Contact'
 import { NotFound } from './pages/NotFound'
 import { Quizzes } from './pages/Quizzes'
+import { Pricing } from './pages/Pricing'
 import { LoginModal } from './components/common/LoginModal'
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/careers/:id" element={<CareerDetails />} />
             <Route path="/technologies" element={<Technologies />} />
             <Route path="/quizzes" element={<Quizzes />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

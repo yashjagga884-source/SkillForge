@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Eye, EyeOff, LockKeyhole, LogIn, Mail, Sparkles, UserPlus, X } from 'lucide-react'
+import { Eye, EyeOff, LogIn, Mail, UserPlus, X } from 'lucide-react'
 import './LoginModal.css'
 
 const REMEMBERED_EMAIL_KEY = 'skillforge-remembered-email'
@@ -164,10 +164,7 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
           <p className="login-welcome-copy">
             Pick up where you left off and keep building the skills that move your career forward.
           </p>
-          <div className="login-promise">
-            <span className="login-promise-dot" aria-hidden="true" />
-            Your next opportunity starts with one step.
-          </div>
+          <p className="login-promise">Your next opportunity starts with one step.</p>
         </div>
 
         <div className="login-card-wrap">
@@ -203,7 +200,6 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
             <div className="login-field">
               <label htmlFor="login-password">Password</label>
               <div className={`login-input-wrap${errors.password ? ' has-error' : ''}`}>
-                <LockKeyhole size={18} aria-hidden="true" />
                 <input
                   id="login-password"
                   name="password"
@@ -233,7 +229,6 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
               <div className="login-field">
                 <label htmlFor="login-confirm-password">Confirm password</label>
                 <div className={`login-input-wrap${errors.confirmPassword ? ' has-error' : ''}`}>
-                  <LockKeyhole size={18} aria-hidden="true" />
                   <input
                     id="login-confirm-password"
                     name="confirmPassword"
@@ -261,9 +256,6 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
                   />
                   <span>Remember my email</span>
                 </label>
-                <span className="login-unavailable-link" title="Password recovery is not configured yet">
-                  Password recovery unavailable
-                </span>
               </div>
             )}
 
@@ -281,10 +273,6 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
             </p>
           </form>
 
-          <p className="login-secure-note">
-            <LockKeyhole size={14} aria-hidden="true" />
-            Demo accounts are kept in React state until you refresh the page.
-          </p>
         </div>
       </section>
     </div>

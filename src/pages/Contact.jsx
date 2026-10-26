@@ -76,13 +76,13 @@ export function Contact() {
             {
               icon: Phone,
               label: 'Phone',
-              value: '+1 (555) 123-4567',
-              href: 'tel:+15551234567'
+              value: '+91 7018683777',
+              href: 'tel:+917018683777'
             },
             {
               icon: MapPin,
               label: 'Location',
-              value: 'San Francisco, CA',
+              value: 'Chitkara University',
               href: '#'
             },
           ].map((info, i) => {

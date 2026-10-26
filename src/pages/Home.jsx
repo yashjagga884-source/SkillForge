@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Zap, Users, Rocket } from 'lucide-react'
+import { ArrowRight, Zap, Users, Rocket, BookOpen, Compass, Code2 } from 'lucide-react'
 import { CAREERS, TECHNOLOGIES, TESTIMONIALS, FAQS } from '../constants/data'
 import { CareerCard } from '../components/common/CareerCard'
 import { TechCard } from '../components/common/TechCard'
@@ -109,6 +109,33 @@ export function Home() {
             )
           })}
         </motion.div>
+      </section>
+
+      {/* Quick links for returning learners */}
+      <section aria-labelledby="learning-dashboard-heading" className="-mt-8">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 id="learning-dashboard-heading" className="text-2xl font-semibold">Your learning dashboard</h2>
+            <p className="mt-1 text-slate-600 dark:text-slate-300">Pick up with a career, a skill, or a quick quiz.</p>
+          </div>
+          <span className="text-sm text-slate-500 dark:text-slate-400">Choose what you want to work on today</span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            { icon: Compass, title: 'Explore careers', detail: 'Compare paths and see what fits.', action: 'Browse careers', to: '/careers' },
+            { icon: Code2, title: 'Build a skill', detail: 'Find technologies to learn next.', action: 'View technologies', to: '/technologies' },
+            { icon: BookOpen, title: 'Take a quiz', detail: 'Check what you know in a few minutes.', action: 'Open quizzes', to: '/quizzes' },
+          ].map(({ icon: Icon, title, detail, action, to }) => (
+            <button key={title} onClick={() => navigate(to)} className="card group flex w-full items-start gap-4 p-5 text-left hover:border-primary/50">
+              <span className="rounded-lg bg-primary/10 p-3 text-primary"><Icon size={21} aria-hidden="true" /></span>
+              <span className="min-w-0">
+                <span className="block font-semibold">{title}</span>
+                <span className="mt-1 block text-sm text-slate-600 dark:text-slate-300">{detail}</span>
+                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">{action}<ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
+              </span>
+            </button>
+          ))}
+        </div>
       </section>
 
       {/* Featured Careers */}

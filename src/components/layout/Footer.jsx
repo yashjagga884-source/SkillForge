@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-white dark:bg-dark-card border-t border-primary/15 dark:border-dark-border mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <h3 className="text-xl font-bold font-poppins gradient-text mb-2">SkillForge</h3>

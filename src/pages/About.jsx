@@ -120,19 +120,19 @@ export function About() {
         >
           {[
             {
-              name: 'Alex Kumar',
+              name: 'Hitesh',
               role: 'Founder & CEO',
               bio: 'Full-stack developer with 10+ years of experience building scalable products.',
               emoji: '👨‍💼'
             },
             {
-              name: 'Priya Sharma',
+              name: 'Vaibhav Saini',
               role: 'Head of Content',
               bio: 'Career strategist and educational researcher focused on student success.',
-              emoji: '👩‍🏫'
+              emoji: '👨‍💻'
             },
             {
-              name: 'Rahul Singh',
+              name: 'Yash Jagga',
               role: 'AI Lead',
               bio: 'ML engineer specializing in personalization and recommendation systems.',
               emoji: '👨‍💻'

@@ -325,6 +325,28 @@ export const TECHNOLOGIES = [
     learningTime: '8 weeks',
     resources: ['Kubernetes Docs', 'Linux Academy', 'Udemy'],
     relatedCareers: ['DevOps Engineer', 'Cloud Architect']
+  },
+  {
+    id: 13,
+    name: 'HTML',
+    category: 'Web Foundations',
+    level: 'Beginner',
+    icon: '📄',
+    description: 'Structure the content on a web page',
+    learningTime: '2 weeks',
+    resources: ['MDN HTML', 'freeCodeCamp', 'W3Schools'],
+    relatedCareers: ['Frontend Developer', 'UI/UX Designer']
+  },
+  {
+    id: 14,
+    name: 'CSS',
+    category: 'Web Foundations',
+    level: 'Beginner',
+    icon: '🎨',
+    description: 'Style pages and make layouts responsive',
+    learningTime: '3 weeks',
+    resources: ['MDN CSS', 'CSS-Tricks', 'freeCodeCamp'],
+    relatedCareers: ['Frontend Developer', 'UI/UX Designer']
   }
 ]
 

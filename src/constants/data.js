@@ -407,9 +407,4 @@ export const FAQS = [
     question: 'Can I track my progress?',
     answer: 'Yes! SkillForge includes comprehensive progress tracking with milestones, streaks, and visual analytics. You can see exactly how far you\'ve come and what lies ahead.'
   },
-  {
-    id: 6,
-    question: 'How can I get interview preparation help?',
-    answer: 'SkillForge includes an interview prep module with curated questions for each career path, practice scenarios, and feedback to help you ace your interviews.'
-  }
 ]

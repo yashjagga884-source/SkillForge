@@ -85,7 +85,7 @@ export function About() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-white text-secondary rounded-2xl border border-primary/20 p-12"
+        className="bg-white dark:bg-dark-card text-secondary dark:text-gray-100 rounded-2xl border border-primary/20 p-12"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[

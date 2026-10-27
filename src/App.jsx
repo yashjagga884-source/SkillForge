@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { ToastContainer } from './components/common/Toast'
@@ -13,10 +14,12 @@ import { NotFound } from './pages/NotFound'
 import { Quizzes } from './pages/Quizzes'
 import { Pricing } from './pages/Pricing'
 import { LoginModal } from './components/common/LoginModal'
+import { signIn as signInAction, signOut as signOutAction } from './store/authSlice'
 
 function App() {
+  const dispatch = useDispatch()
+  const signedInEmail = useSelector((state) => state.auth.email)
   const [isLoginOpen, setIsLoginOpen] = useState(true)
-  const [signedInEmail, setSignedInEmail] = useState('')
   const [accounts, setAccounts] = useState([
     { email: 'demo@skillforge.ai', password: 'SkillForge123' },
   ])
@@ -24,13 +27,13 @@ function App() {
   const openLogin = useCallback(() => setIsLoginOpen(true), [])
   const closeLogin = useCallback(() => setIsLoginOpen(false), [])
   const signIn = useCallback((email) => {
-    setSignedInEmail(email)
+    dispatch(signInAction(email))
     setIsLoginOpen(false)
-  }, [])
+  }, [dispatch])
   const registerAccount = useCallback((account) => {
     setAccounts((currentAccounts) => [...currentAccounts, account])
   }, [])
-  const signOut = useCallback(() => setSignedInEmail(''), [])
+  const handleSignOut = useCallback(() => dispatch(signOutAction()), [dispatch])
 
   return (
     <ThemeProvider>
@@ -40,7 +43,7 @@ function App() {
           onOpenLogin={openLogin}
           isSignedIn={Boolean(signedInEmail)}
           signedInEmail={signedInEmail}
-          onSignOut={signOut}
+          onSignOut={handleSignOut}
         >
           <Routes>
             <Route path="/" element={<Home />} />

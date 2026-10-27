@@ -95,7 +95,7 @@ export function Quizzes() {
       <div className="card p-6 sm:p-8">
         <div className="mb-5 flex items-center justify-between gap-3 text-sm text-slate-500 dark:text-slate-300">
           <span>{quiz.title}</span>
-          <span className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1 font-medium ${secondsLeft <= 30 ? 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200' : 'border-slate-200 bg-slate-50 text-slate-600 dark:border-dark-border dark:bg-white/5 dark:text-slate-300'}`} aria-live="polite">
+          <span className={`inline-flex items-center gap-1.5 font-semibold ${secondsLeft <= 30 ? 'text-red-600 dark:text-red-300' : ''}`} aria-live="polite">
             <Clock3 size={16} />{Math.floor(secondsLeft / 60)}:{String(secondsLeft % 60).padStart(2, '0')}
           </span>
           <span>{questionIndex + 1} / {quiz.questions.length}</span>

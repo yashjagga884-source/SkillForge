@@ -1,19 +1,21 @@
 import { Star, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleFavorite } from '../../store/savedItemsSlice'
 import toast from 'react-hot-toast'
 
 export function CareerCard({ career, onClick }) {
-  const [favorites, setFavorites] = useLocalStorage('favorites', [])
+  const dispatch = useDispatch()
+  const favorites = useSelector((state) => state.savedItems.favorites)
   const isFavorited = favorites.includes(career.id)
 
   const handleFavorite = (e) => {
     e.stopPropagation()
     if (isFavorited) {
-      setFavorites(favorites.filter(id => id !== career.id))
+      dispatch(toggleFavorite(career.id))
       toast.success('Removed from favorites')
     } else {
-      setFavorites([...favorites, career.id])
+      dispatch(toggleFavorite(career.id))
       toast.success('Added to favorites')
     }
   }

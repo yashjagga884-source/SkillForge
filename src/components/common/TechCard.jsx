@@ -1,19 +1,21 @@
 import { Bookmark } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleBookmark } from '../../store/savedItemsSlice'
 import toast from 'react-hot-toast'
 
 export function TechCard({ tech }) {
-  const [bookmarks, setBookmarks] = useLocalStorage('bookmarks', [])
+  const dispatch = useDispatch()
+  const bookmarks = useSelector((state) => state.savedItems.bookmarks)
   const isBookmarked = bookmarks.includes(tech.id)
 
   const handleBookmark = (e) => {
     e.stopPropagation()
     if (isBookmarked) {
-      setBookmarks(bookmarks.filter(id => id !== tech.id))
+      dispatch(toggleBookmark(tech.id))
       toast.success('Removed bookmark')
     } else {
-      setBookmarks([...bookmarks, tech.id])
+      dispatch(toggleBookmark(tech.id))
       toast.success('Bookmarked!')
     }
   }

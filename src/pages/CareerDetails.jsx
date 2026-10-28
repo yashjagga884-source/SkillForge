@@ -4,13 +4,16 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Bookmark, Share2 } from 'lucide-react'
 import { CAREERS } from '../constants/data'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleBookmark } from '../store/savedItemsSlice'
 import toast from 'react-hot-toast'
 
 export function CareerDetails() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const bookmarks = useSelector((state) => state.savedItems.bookmarks)
   const [recentlyViewed, setRecentlyViewed] = useLocalStorage('recentlyViewed', [])
-  const [bookmarks, setBookmarks] = useLocalStorage('bookmarks', [])
 
   const career = CAREERS.find(c => c.id === parseInt(id))
 
@@ -40,10 +43,10 @@ export function CareerDetails() {
 
   const handleBookmark = () => {
     if (isBookmarked) {
-      setBookmarks(bookmarks.filter(bid => bid !== career.id))
+      dispatch(toggleBookmark(career.id))
       toast.success('Removed bookmark')
     } else {
-      setBookmarks([...bookmarks, career.id])
+      dispatch(toggleBookmark(career.id))
       toast.success('Bookmarked!')
     }
   }

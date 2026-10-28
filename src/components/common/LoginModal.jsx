@@ -40,29 +40,35 @@ export function LoginModal({ accounts, demoAccount, onClose, onRegister, onSignI
     }
   }, [onClose])
 
-  const validateForm = () => {
-    const nextErrors = {}
-    const normalizedEmail = email.trim()
+  
+const validateForm = () => {
+  const nextErrors = {};
+  const normalizedEmail = email.trim();
 
-    if (!normalizedEmail) {
-      nextErrors.email = 'Enter your email address.'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
-      nextErrors.email = 'Enter a valid email address.'
-    }
-
-    if (!password) {
-      nextErrors.password = 'Enter your password.'
-    } else if (password.length < 8) {
-      nextErrors.password = 'Your password must be at least 8 characters.'
-    }
-
-    if (isRegistering && confirmPassword !== password) {
-      nextErrors.confirmPassword = 'The passwords do not match.'
-    }
-
-    setErrors(nextErrors)
-    return Object.keys(nextErrors).length === 0
+  if (!normalizedEmail) {
+    nextErrors.email = 'Enter your email address.';
+  } else if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)
+  ) {
+    nextErrors.email = 'Enter a valid email address.';
   }
+
+  if (!password) {
+    nextErrors.password = 'Enter your password.';
+  } else if (password.length < 8) {
+    nextErrors.password =
+      'Your password must be at least 8 characters.';
+  }
+
+  if (isRegistering && confirmPassword !== password) {
+    nextErrors.confirmPassword = 'The passwords do not match.';
+  }
+
+  setErrors(nextErrors);
+
+  return Object.keys(nextErrors).length === 0;
+};
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
